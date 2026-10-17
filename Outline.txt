@@ -18,28 +18,79 @@ https://wcsafety.com/blogs/reference/how-to-perform-lockout-tagout
 -Inform operators and nearby personnel that the equipment will be shut down and locked out.
 -Notification prevents accidental restarts.
 
-
 3. Shut Down the Equipment
-Use the machine’s normal stopping procedure (not the disconnect switch).
-Ensure an orderly shutdown to avoid creating hazards.
+-Use the machine’s normal stopping procedure (not the disconnect switch).
+-Ensure an orderly shutdown to avoid creating hazards.
 
 4. Isolate All Energy Sources
-Open disconnects, close valves, block mechanical parts, blank lines, unplug equipment as required.
-Every identified energy source must have a corresponding isolation action.
+-Open disconnects, close valves, block mechanical parts, blank lines, unplug equipment as required.
+-Every identified energy source must have a corresponding isolation action.
 
 5. Apply Locks and Tags
-Each authorized worker applies their own lock and tag.
-Tags must identify who applied them and why.
-Group lockout uses a lockbox so each worker controls their own protection.
+-Each authorized worker applies their own lock and tag.
+-Tags must identify who applied them and why.
+-Group lockout uses a lockbox so each worker controls their own protection.
 
 6. Release or Restrain Stored Energy
-Bleed hydraulic/pneumatic lines, discharge capacitors, block elevated parts, release spring tension, allow hot surfaces to cool.
-Isolation stops new energy; this step removes what’s already stored.
+-Bleed hydraulic/pneumatic lines, discharge capacitors, block elevated parts, release spring tension, allow hot surfaces to cool.
+-Isolation stops new energy; this step removes what’s already stored.
 
 7. Verify Zero‑Energy State
-Attempt to start the machine using normal controls (then return them to “off”).
-Use test instruments where appropriate (e.g., voltage tester).
-This is the most commonly skipped and most critical step.
+-Attempt to start the machine using normal controls (then return them to “off”).
+-Use test instruments where appropriate (e.g., voltage tester).
+-This is the most commonly skipped and most critical step.
 
 8. Perform the Work
-Only after verification is complete may servicing or maintenance begin.
+-Only after verification is complete may servicing or maintenance begin.
+
+
+Fork Lift Saftey Simulation:
+1. Visual Inspection
+
+☐ Tires in good condition, properly inflated (if pneumatic)
+ ☐ No excessive tire wear or damage
+ ☐ Forks free from cracks, bends, or excessive wear
+ ☐ Mast and chains in good condition
+ ☐ Load backrest secure
+ ☐ Overhead guard undamaged
+ ☐ No visible hydraulic leaks
+ ☐ No fuel, oil, or coolant leaks
+ ☐ Battery secure and charged (electric forklifts)
+ ☐ LPG/propane tank secured, no leaks (if applicable)
+ ☐ Capacity plate present and readable
+ ☐ Safety decals and warning labels legible
+
+
+2. Operational Inspection
+
+☐ Seat belt functions properly
+ ☐ Horn operates correctly
+ ☐ Backup alarm operational (if equipped)
+ ☐ Lights working properly
+ ☐ Brakes function effectively
+ ☐ Parking brake holds forklift in place
+ ☐ Steering operates smoothly
+ ☐ Hydraulic controls function correctly
+ ☐ Lift, lower, and tilt functions operate properly
+ ☐ Gauges and indicators working
+ ☐ No unusual noises or vibrations
+
+
+3. Safety Checks
+
+☐ Fire extinguisher available (if required)
+ ☐ Operator compartment clean and clear
+ ☐ Mirrors adjusted and undamaged
+ ☐ Load capacity understood and visible
+ ☐ Emergency procedures reviewed
+ ☐ No unauthorized modifications to forklift
+
+
+4. Operating Area Inspection
+
+☐ Travel paths clear of obstacles
+ ☐ Adequate lighting in work area
+ ☐ Floor surfaces free from major hazards
+ ☐ Pedestrian walkways marked and visible
+ ☐ Loading docks and ramps safe for operation
+ ☐ Aisles and intersections clearly marked
