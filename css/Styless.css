@@ -15,7 +15,7 @@ body {
 }
 body.forklift-page {
 	min-height: 100vh;
-	background-image: linear-gradient(rgb(239 239 233 / 68%), rgb(239 239 233 / 68%)), url("../images/Foundry-Background.jpg");
+	background-image: url("../images/Foundry-Background.jpg");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -203,6 +203,17 @@ h1 em { color: #b7592e; }
 .inspection-item small { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
 .safety-note { display: flex; align-items: flex-start; gap: 12px; margin: 24px 0 0; color: #515a54; font-size: 12px; line-height: 1.6; }
 .safety-note span { width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; background: #f8d8c5; color: #9b4924; font-weight: 800; }
+.image-container {
+    position: relative;
+    width: min(100%, 640px);
+    margin: 16px auto 0;
+    display: inline-block;
+}
+.forklift-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 @media (max-width: 600px) {
     .topbar { height: 58px; padding: 0 20px; }
     .page-label { font-size: 9px; }
@@ -215,4 +226,35 @@ h1 em { color: #b7592e; }
 @media (min-width: 601px) and (max-width: 799px) {
     .checklist-page { width: 100%; padding: 32px 28px 64px; }
     .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
+}
+
+.clickable-boxes {
+    position: absolute;
+    inset: 0;
+
+}
+
+.clickable-boxes button{
+    position: absolute;
+    display: block;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    background: rgb(240 123 56 / 55%);
+    box-shadow: 0 0 0 2px var(--ink);
+    cursor: pointer;
+}
+
+.wheel-box--front {
+    top: 75%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    width: 14%;
+}
+
+.wheel-box--rear {
+    top: 76%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    width: 8%;
 }

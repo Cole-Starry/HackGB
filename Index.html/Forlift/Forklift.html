@@ -21,20 +21,29 @@
         <details class="inspection-panel" open>
             <summary>Forklift checklist</summary>
             <form class="inspection-list">
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Tires and wheels</strong><small>Check for damage, wear, and secure wheel nuts.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Forks and mast</strong><small>Look for cracks, bends, and secure locking pins.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Hydraulics and chains</strong><small>Check for leaks, wear, or damaged lift chains.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Brakes and steering</strong><small>Test service brake, parking brake, and steering response.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Lights, horn, and alarms</strong><small>Confirm warning lights and audible signals work.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Seat belt and overhead guard</strong><small>Check the restraint and guard are present and secure.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Fuel or battery</strong><small>Check fuel level or battery charge and connections.</small></span></label>
-                <label class="inspection-item"><input type="checkbox"><span class="checkmark" aria-hidden="true"></span><span><strong>Travel path</strong><small>Make sure the route is clear and the floor is stable.</small></span></label>
+                <label class="inspection-item"><input type="checkbox" id="tires-wheels" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Tires and wheels</strong><small>Check for damage, wear, and secure wheel nuts.</small></span></label>
+                <label class="inspection-item"><input type="checkbox" id="forks-mast" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Forks and mast</strong><small>Look for cracks, bends, and secure locking pins.</small></span></label>
+                <label class="inspection-item"><input type="checkbox" id="hydraulics-chains" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Hydraulics and chains</strong><small>Check for leaks, wear, or damaged lift chains.</small></span></label>
+                <label class="inspection-item"><input type="checkbox" id="lights-horn-alarms" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Lights, horn, and alarms</strong><small>Confirm warning lights and audible signals work.</small></span></label>
+                
+                
+                
             </form>
         </details>
-        <div>
+        <div class="image-container">
             <img class="forklift-image" src="../../images/forklift.png" alt="Forklift illustration">
+  
+        <!-- Wheel hotspots -->
+            <div class="clickable-boxes">
+                <button type="button" class="wheel-box wheel-box--front" aria-label="Front wheel"></button>
+                <button type="button" class="wheel-box wheel-box--rear" aria-label="Rear wheel"></button>
+                <button type="button" class="Forks" aria-label="Forks"></button>
+            </div>
+
             
         </div>
+        
     </main>
+    <script src="../../JavaScript/Forklift.js"></script>
 </body>
 </html>
