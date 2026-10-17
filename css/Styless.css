@@ -400,7 +400,7 @@ h1 em { color: #b7592e; }
 @media (max-width: 600px) {
     .topbar { height: 58px; padding: 0 20px; }
     .page-label { font-size: 9px; }
-<<<<<<< HEAD
+
     .loto-game-page { min-height: calc(100vh - 58px); padding: 18px 12px 30px; }
     .loto-game-header { align-items: flex-start; flex-direction: column; gap: 7px; }
     .loto-hud { gap: 6px; }
@@ -416,7 +416,7 @@ h1 em { color: #b7592e; }
     .loto-mission-panel { display: block; padding: 12px; }
     .loto-step-list li { font-size: 9px; }
     .loto-task { min-height: 0; padding: 14px; }
-=======
+
     .checklist-page { width: 100%; padding: 24px 20px 44px; }
     .checklist-heading { padding-top: 32px; }
     .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
@@ -426,7 +426,7 @@ h1 em { color: #b7592e; }
 @media (min-width: 601px) and (max-width: 799px) {
     .checklist-page { width: 100%; padding: 32px 28px 64px; }
     .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
->>>>>>> 4ea0add7e54ef82fbd89b6f399e13b0546328408
+
 }
 
 .clickable-boxes {
@@ -437,7 +437,6 @@ h1 em { color: #b7592e; }
 
 .clickable-boxes button{
     position: absolute;
-    display: block;
     aspect-ratio: 1;
     padding: 0;
     border: 0;
@@ -451,6 +450,7 @@ h1 em { color: #b7592e; }
     left: 54%;
     transform: translate(-50%, -50%);
     width: 14%;
+    display: block;
 }
 
 .wheel-box--rear {
@@ -458,4 +458,13 @@ h1 em { color: #b7592e; }
     left: 85%;
     transform: translate(-50%, -50%);
     width: 8%;
+    display: block;
+}
+
+.Forks {
+    top: 80%;
+    left: 24%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    height: 10%;
 }
