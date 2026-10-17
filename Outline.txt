@@ -1,10 +1,18 @@
 General outline for project
 
 Lock Out Tag Out Simulation:
+
+
 Gives task bar including saftey steps. If a saftey step is done wrong or missed, a 
 graphic pops up to tell the person that they failed and demonstrate that they put themselves
 or others in danger. This pop-up describes what they did wrong and what the right task is. 
 That step is then restarted and has to be performed correctly before moving onto the next step.
+
+Show a visual of a hydrolic, electrical, pneumatic, and mechanical machine case and be able to click 
+different components to find information before the screen switches to a quiz about the proper procedure.
+
+
+FIX ISSUE : Change error page to look less like a tech issue.
 
 Lock Out Tag Out Saftey Steps:
 
@@ -94,3 +102,10 @@ Fork Lift Saftey Simulation:
  ☐ Pedestrian walkways marked and visible
  ☐ Loading docks and ramps safe for operation
  ☐ Aisles and intersections clearly marked
+
+
+
+Confined Space Saftey:
+
+
+Crane Operation Saftey:

@@ -203,6 +203,189 @@ h1 em { color: #b7592e; }
 .inspection-item small { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
 .safety-note { display: flex; align-items: flex-start; gap: 12px; margin: 24px 0 0; color: #515a54; font-size: 12px; line-height: 1.6; }
 .safety-note span { width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; background: #f8d8c5; color: #9b4924; font-weight: 800; }
+.loto-step-list {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+    counter-reset: loto-step;
+}
+.loto-step-list li {
+    padding: 10px 12px;
+    border-left: 3px solid #c8cac2;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+.loto-step-list li.is-current { border-color: var(--orange); background: #f8d8c5; color: var(--ink); font-weight: 700; }
+.loto-step-list li.is-complete { border-color: var(--teal); color: var(--ink); }
+.loto-progress { width: 100%; height: 8px; accent-color: #477e70; }
+.loto-progress-text { margin: 8px 0 20px; color: var(--muted); font-size: 12px; }
+.loto-task { padding: 24px; border: 1px solid #c8cac2; background: #f7f7f2; }
+.loto-task h2, .loto-feedback h2 { font-size: clamp(22px, 4vw, 30px); line-height: 1.2; }
+.loto-task > p, .loto-feedback > p { color: #515a54; font-size: 13px; line-height: 1.65; }
+.loto-choices { display: grid; gap: 10px; margin-top: 20px; }
+.loto-choice {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #929890;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+    cursor: pointer;
+}
+.loto-choice:hover { border-color: #477e70; background: #e1eee9; }
+.loto-choice:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.loto-feedback {
+    width: min(480px, calc(100% - 32px));
+    padding: 28px;
+    border: 2px solid #b7592e;
+    background: var(--paper);
+    color: var(--ink);
+}
+.loto-feedback::backdrop { background: rgba(15, 19, 18, .72); }
+.loto-hazard-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    border: 3px solid #b7592e;
+    border-radius: 50%;
+    color: #b7592e;
+    font-size: 30px;
+    font-weight: 800;
+}
+.loto-feedback .loto-correction { padding: 12px; background: #e1eee9; color: var(--ink); }
+.loto-feedback .loto-retry { margin-top: 8px; border-color: var(--ink); background: var(--ink); color: var(--paper); text-align: center; }
+.loto-feedback .loto-retry:hover { background: #39423e; }
+.loto-game-page { min-height: calc(100vh - 64px); padding: 30px clamp(16px, 4vw, 56px) 48px; background: #111715; color: #e7e9df; }
+.loto-game { width: min(1240px, 100%); margin: 0 auto; }
+.loto-game-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 0 18px; border-bottom: 1px solid #303a35; }
+.loto-game-header p { margin: 0; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+.loto-game-name { color: #75b8a7; }
+.loto-mission-name { color: #a9aea7; }
+.loto-hud { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.loto-hud-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 16px; border: 1px solid #303a35; background: #1a211e; }
+.loto-hud-item span { color: #9ba49d; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; }
+.loto-hud-item strong { color: #f07b38; font-family: Consolas, monospace; font-size: 17px; }
+.loto-game-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr); align-items: start; gap: 18px; }
+.loto-scene { position: relative; overflow: hidden; min-height: 385px; padding: 16px; border: 1px solid #303a35; background: radial-gradient(ellipse at 52% 49%, #34433b 0, #202a25 45%, #18201c 78%); }
+.loto-scene::before { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 31px, rgba(220, 230, 220, .035) 32px), repeating-linear-gradient(90deg, transparent 0 31px, rgba(220, 230, 220, .035) 32px); content: ""; pointer-events: none; }
+.loto-scene-label { position: relative; z-index: 1; color: #a9aea7; font-family: Consolas, monospace; font-size: 10px; letter-spacing: 1.2px; }
+.loto-live-dot { display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #f07b38; box-shadow: 0 0 9px #f07b38; }
+.loto-machine { position: relative; z-index: 1; display: block; width: 100%; max-width: 560px; margin: 25px auto 4px; }
+.machine-base, .machine-body, .machine-top { fill: #68756b; stroke: #a9b1a7; stroke-width: 2; }
+.machine-window { fill: #26312b; stroke: #9ba69a; stroke-width: 2; }
+.machine-bolt, .scene-floor { fill: none; stroke: #a9b1a7; stroke-width: 2; }
+.machine-wheel { fill: #1a201d; stroke: #8d998e; stroke-width: 3; }
+.machine-panel { fill: #343f38; stroke: #a9b1a7; stroke-width: 2; }
+.panel-display { fill: #17221d; stroke: #75b8a7; stroke-width: 1.5; }
+.panel-button { stroke: #1a201d; stroke-width: 2; }
+.panel-button-red { fill: #f07b38; }
+.panel-button-green { fill: #75b8a7; }
+.scene-pipe { fill: none; stroke-width: 5; stroke-dasharray: 8 6; transition: opacity .3s, stroke .3s; }
+.scene-pipe-electric { stroke: #f07b38; }
+.scene-pipe-hydraulic { stroke: #73a7de; }
+.scene-pipe-air { stroke: #75b8a7; }
+.scene-pipe-mechanical { stroke: #dfce77; }
+.machine-overlay { display: none; fill: #202924; stroke: #f3eee3; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.5; }
+.machine-overlay path { fill: none; }
+.machine-overlay.overlay-crew { fill: #75b8a7; stroke: #75b8a7; }
+.machine-overlay.overlay-isolation { fill: none; stroke: #f07b38; }
+.machine-overlay.overlay-locks { fill: #f07b38; stroke: #f3eee3; }
+.machine-overlay .lock-tag { fill: #f07b38; stroke: #f07b38; }
+.machine-overlay .tag-mark { stroke: #1b211f; stroke-width: 1.5; }
+.machine-overlay.overlay-stored { fill: #202924; stroke: #dfce77; }
+.machine-overlay .gauge-needle { stroke: #f07b38; stroke-width: 3; }
+.machine-overlay .safety-block { fill: #dfce77; stroke: #f3eee3; }
+.machine-overlay.overlay-test { fill: #202924; stroke: #75b8a7; }
+.machine-overlay .tester-screen { fill: #75b8a7; stroke: #75b8a7; }
+.machine-overlay.overlay-work { fill: none; stroke: #75b8a7; stroke-width: 3; }
+.machine-overlay .work-check { stroke: #75b8a7; stroke-width: 3; }
+.loto-scene[data-stage="1"] .overlay-crew,
+.loto-scene[data-stage="3"] .overlay-isolation,
+.loto-scene[data-stage="4"] .overlay-locks,
+.loto-scene[data-stage="5"] .overlay-stored,
+.loto-scene[data-stage="6"] .overlay-test,
+.loto-scene[data-stage="7"] .overlay-work { display: block; }
+.loto-scene[data-stage="1"] .overlay-crew { animation: loto-secured-pop .35s ease-out; }
+.loto-scene[data-stage="4"] .scene-pipe { opacity: .2; }
+.loto-scene[data-stage="5"] .machine-wheel { opacity: .45; }
+.loto-scene[data-stage="6"] .panel-button-green { fill: #75b8a7; filter: drop-shadow(0 0 4px #75b8a7); }
+.loto-scene[data-stage="7"] .overlay-work { animation: loto-secured-pop .35s ease-out; }
+.scene-label { fill: #a9b1a7; font-family: Consolas, monospace; font-size: 11px; letter-spacing: 1.2px; }
+.loto-energy-legend { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.loto-energy-legend span { padding: 5px 8px; border: 1px solid #49554c; color: #c7ccc4; font-family: Consolas, monospace; font-size: 9px; letter-spacing: .7px; }
+.energy-electric { border-color: #f07b38 !important; }
+.energy-hydraulic { border-color: #73a7de !important; }
+.energy-air { border-color: #75b8a7 !important; }
+.energy-mechanical { border-color: #dfce77 !important; }
+.loto-scene-caption { position: relative; z-index: 1; margin: 14px 0 0; color: #a9aea7; font-size: 10px; text-align: center; }
+.loto-scene-caption strong { color: #f07b38; font-family: Consolas, monospace; }
+.loto-scene.is-safe .loto-live-dot { background: #75b8a7; box-shadow: 0 0 9px #75b8a7; }
+.loto-scene.is-safe .scene-pipe { opacity: .18; }
+.loto-scene.is-safe .loto-scene-caption strong { color: #75b8a7; }
+.loto-scene-action { position: relative; z-index: 1; display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 14px; width: min(460px, 100%); margin: 18px auto 0; padding: 13px 16px; border: 1px solid #465148; background: rgba(26, 33, 30, .92); }
+.loto-scene-action-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #f07b38; background: #342820; color: #f07b38; }
+.loto-scene-action-icon svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+.loto-scene-action-label { display: block; margin-bottom: 4px; color: #75b8a7; font-family: Consolas, monospace; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }
+.loto-scene-action-title { display: block; color: #f3eee3; font-size: 12px; }
+.loto-scene-action-description { margin: 4px 0 0; color: #a9b1a7; font-size: 10px; line-height: 1.5; }
+.loto-scene[data-stage="0"] .scene-pipe { animation: loto-energy-pulse 1.4s ease-in-out infinite alternate; }
+.loto-scene[data-stage="2"] .panel-button-red { fill: #75b8a7; }
+.loto-scene[data-stage="2"] .panel-button-green { fill: #66736a; }
+.loto-scene[data-stage="3"] .scene-pipe { opacity: .35; }
+.loto-scene[data-stage="3"] .loto-energy-legend span { opacity: .5; }
+.loto-scene[data-stage="4"] .loto-scene-action-icon,
+.loto-scene[data-stage="5"] .loto-scene-action-icon { border-color: #dfce77; background: #373321; color: #dfce77; }
+.loto-scene[data-stage="6"] .panel-display { fill: #75b8a7; }
+.loto-scene[data-stage="7"] .machine-window { fill: #435c4b; }
+.loto-scene.is-secured .loto-scene-action-icon { border-color: #75b8a7; background: #202d26; color: #75b8a7; }
+.loto-scene.is-secured .loto-scene-action-icon svg { animation: loto-secured-pop .35s ease-out; }
+@keyframes loto-energy-pulse { from { opacity: .55; } to { opacity: 1; } }
+@keyframes loto-secured-pop { 0% { transform: scale(.75); } 70% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.loto-mission-panel { padding: 18px; border: 1px solid #303a35; background: #1a211e; }
+.loto-step-list { gap: 2px; margin-bottom: 13px; }
+.loto-step-list li { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-left-width: 2px; color: #929b94; font-size: 10px; }
+.loto-step-number { color: #78847b; font-family: Consolas, monospace; font-size: 9px; }
+.loto-step-list li.is-current { border-color: #f07b38; background: #342820; color: #f3eee3; }
+.loto-step-list li.is-current .loto-step-number { color: #f07b38; }
+.loto-step-list li.is-complete { border-color: #75b8a7; color: #c8d9cf; }
+.loto-step-list li.is-complete .loto-step-number { color: #75b8a7; }
+.loto-progress { height: 5px; accent-color: #75b8a7; }
+.loto-progress-text { margin: 6px 0 14px; color: #9ba49d; font-family: Consolas, monospace; font-size: 9px; letter-spacing: .7px; }
+.loto-task { min-height: 245px; padding: 17px; border-color: #39443d; background: #202924; color: #e7e9df; }
+.loto-task-kicker { margin: 0 0 8px !important; color: #75b8a7 !important; font-family: Consolas, monospace; font-size: 9px !important; font-weight: 700; letter-spacing: 1.2px; }
+.loto-task h2 { color: #f3eee3; font-family: "Segoe UI", Tahoma, sans-serif; font-size: 21px; font-weight: 700; }
+.loto-task > p { color: #b6bdb5; font-size: 12px; }
+.loto-choices { gap: 7px; margin-top: 14px; }
+.loto-choice { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border-color: #465148; background: #28312b; color: #e7e9df; font-size: 11px; }
+.loto-choice:hover { border-color: #75b8a7; background: #303d35; }
+.loto-choice-number { flex: 0 0 auto; color: #f07b38; font-family: Consolas, monospace; font-weight: 700; }
+.loto-choice.loto-start { justify-content: center; margin-top: 14px; border-color: #f07b38; background: #f07b38; color: #1b211f; font-weight: 800; text-align: center; }
+.loto-choice.loto-start:hover { background: #ff9a5d; }
+.loto-mission-note { padding: 10px; border-left: 2px solid #f07b38; background: #252c27; }
+.loto-success-message { padding: 10px; border: 1px solid #75b8a7; color: #75b8a7 !important; font-family: Consolas, monospace; font-weight: 700; letter-spacing: .8px; }
+.loto-result { display: grid; justify-items: center; gap: 4px; margin: 18px 0; padding: 16px; border: 1px solid #75b8a7; background: #202d26; }
+.loto-result strong { color: #75b8a7; font-family: Consolas, monospace; font-size: 28px; }
+.loto-result span { color: #bdc9c0; font-size: 10px; letter-spacing: .8px; text-align: center; }
+.loto-feedback { border-color: #f07b38; background: #1a211e; color: #e7e9df; }
+.loto-feedback h2 { color: #ff9a5d; font-family: "Segoe UI", Tahoma, sans-serif; font-size: 22px; }
+.loto-feedback > p { color: #c3c8c0; font-size: 12px; }
+.loto-feedback .loto-correction { background: #26362e; color: #dce7de; }
+.loto-feedback .loto-retry { justify-content: center; border-color: #f07b38; background: #f07b38; color: #1b211f; font-weight: 800; text-align: center; }
+.loto-feedback .loto-retry:hover { background: #ff9a5d; }
+@media (max-width: 850px) {
+    .loto-game-body { grid-template-columns: 1fr; }
+    .loto-scene { min-height: 330px; }
+    .loto-mission-panel { display: grid; grid-template-columns: minmax(190px, .8fr) 1.2fr; gap: 0 16px; }
+    .loto-step-list { grid-row: span 3; }
+}
 .image-container {
     position: relative;
     width: min(100%, 640px);
@@ -217,6 +400,23 @@ h1 em { color: #b7592e; }
 @media (max-width: 600px) {
     .topbar { height: 58px; padding: 0 20px; }
     .page-label { font-size: 9px; }
+<<<<<<< HEAD
+    .loto-game-page { min-height: calc(100vh - 58px); padding: 18px 12px 30px; }
+    .loto-game-header { align-items: flex-start; flex-direction: column; gap: 7px; }
+    .loto-hud { gap: 6px; }
+    .loto-hud-item { align-items: flex-start; flex-direction: column; gap: 5px; padding: 9px 10px; }
+    .loto-hud-item span { font-size: 8px; }
+    .loto-hud-item strong { font-size: 15px; }
+    .loto-scene { min-height: 270px; padding: 12px; }
+    .loto-machine { margin-top: 12px; }
+    .loto-scene-action { grid-template-columns: 42px 1fr; gap: 10px; margin-top: 12px; padding: 10px; }
+    .loto-scene-action-icon { width: 40px; height: 40px; }
+    .loto-scene-action-icon svg { width: 27px; height: 27px; }
+    .loto-energy-legend span { padding: 4px 5px; font-size: 8px; }
+    .loto-mission-panel { display: block; padding: 12px; }
+    .loto-step-list li { font-size: 9px; }
+    .loto-task { min-height: 0; padding: 14px; }
+=======
     .checklist-page { width: 100%; padding: 24px 20px 44px; }
     .checklist-heading { padding-top: 32px; }
     .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
@@ -226,6 +426,7 @@ h1 em { color: #b7592e; }
 @media (min-width: 601px) and (max-width: 799px) {
     .checklist-page { width: 100%; padding: 32px 28px 64px; }
     .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
+>>>>>>> 4ea0add7e54ef82fbd89b6f399e13b0546328408
 }
 
 .clickable-boxes {
