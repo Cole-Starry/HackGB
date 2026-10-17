@@ -13,6 +13,13 @@ body {
 	color: var(--ink);
 	font-family: "Segoe UI", Tahoma, sans-serif;
 }
+body.forklift-page {
+	min-height: 100vh;
+	background-image: linear-gradient(rgb(239 239 233 / 68%), rgb(239 239 233 / 68%)), url("../images/Foundry-Background.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 a { color: inherit; }
 .topbar {
 	height: 64px;
@@ -133,7 +140,7 @@ a { color: inherit; }
 
 .brand span { color: #a6aba4; font-weight: 400; }
 .page-label { color: #c9ccc5; font-size: 10px; letter-spacing: 1.3px; }
-.checklist-page { width: min(760px, 100%); margin: 0 auto; padding: 32px 28px 64px; }
+.checklist-page { width: min(1160px, 100%); margin: 0 auto; padding: 32px 400px 64px 28px; }
 .back-link { color: var(--muted); font-size: 12px; text-decoration: none; }
 .back-link:hover { color: #b7592e; }
 .checklist-heading { padding: 38px 0 27px; }
@@ -141,6 +148,30 @@ a { color: inherit; }
 h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 7vw, 64px); font-weight: 400; line-height: 1.02; }
 h1 em { color: #b7592e; }
 .intro { max-width: 490px; margin: 16px 0 0; color: #5f6761; font-size: 14px; line-height: 1.65; }
+.inspection-panel {
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    right: 24px;
+    width: min(360px, calc(100vw - 48px));
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+    padding: 0 18px 18px;
+    border: 1px solid #c8cac2;
+    background: var(--paper);
+    box-shadow: 0 8px 24px rgb(27 33 31 / 14%);
+}
+.inspection-panel summary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 18px 0;
+    border-bottom: 1px solid #c8cac2;
+    background: var(--paper);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
 .inspection-list { border-top: 1px solid #c8cac2; }
 .inspection-item {
     min-height: 72px;
@@ -262,6 +293,31 @@ h1 em { color: #b7592e; }
 .scene-pipe-hydraulic { stroke: #73a7de; }
 .scene-pipe-air { stroke: #75b8a7; }
 .scene-pipe-mechanical { stroke: #dfce77; }
+.machine-overlay { display: none; fill: #202924; stroke: #f3eee3; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.5; }
+.machine-overlay path { fill: none; }
+.machine-overlay.overlay-crew { fill: #75b8a7; stroke: #75b8a7; }
+.machine-overlay.overlay-isolation { fill: none; stroke: #f07b38; }
+.machine-overlay.overlay-locks { fill: #f07b38; stroke: #f3eee3; }
+.machine-overlay .lock-tag { fill: #f07b38; stroke: #f07b38; }
+.machine-overlay .tag-mark { stroke: #1b211f; stroke-width: 1.5; }
+.machine-overlay.overlay-stored { fill: #202924; stroke: #dfce77; }
+.machine-overlay .gauge-needle { stroke: #f07b38; stroke-width: 3; }
+.machine-overlay .safety-block { fill: #dfce77; stroke: #f3eee3; }
+.machine-overlay.overlay-test { fill: #202924; stroke: #75b8a7; }
+.machine-overlay .tester-screen { fill: #75b8a7; stroke: #75b8a7; }
+.machine-overlay.overlay-work { fill: none; stroke: #75b8a7; stroke-width: 3; }
+.machine-overlay .work-check { stroke: #75b8a7; stroke-width: 3; }
+.loto-scene[data-stage="1"] .overlay-crew,
+.loto-scene[data-stage="3"] .overlay-isolation,
+.loto-scene[data-stage="4"] .overlay-locks,
+.loto-scene[data-stage="5"] .overlay-stored,
+.loto-scene[data-stage="6"] .overlay-test,
+.loto-scene[data-stage="7"] .overlay-work { display: block; }
+.loto-scene[data-stage="1"] .overlay-crew { animation: loto-secured-pop .35s ease-out; }
+.loto-scene[data-stage="4"] .scene-pipe { opacity: .2; }
+.loto-scene[data-stage="5"] .machine-wheel { opacity: .45; }
+.loto-scene[data-stage="6"] .panel-button-green { fill: #75b8a7; filter: drop-shadow(0 0 4px #75b8a7); }
+.loto-scene[data-stage="7"] .overlay-work { animation: loto-secured-pop .35s ease-out; }
 .scene-label { fill: #a9b1a7; font-family: Consolas, monospace; font-size: 11px; letter-spacing: 1.2px; }
 .loto-energy-legend { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .loto-energy-legend span { padding: 5px 8px; border: 1px solid #49554c; color: #c7ccc4; font-family: Consolas, monospace; font-size: 9px; letter-spacing: .7px; }
@@ -333,6 +389,7 @@ h1 em { color: #b7592e; }
 @media (max-width: 600px) {
     .topbar { height: 58px; padding: 0 20px; }
     .page-label { font-size: 9px; }
+<<<<<<< HEAD
     .loto-game-page { min-height: calc(100vh - 58px); padding: 18px 12px 30px; }
     .loto-game-header { align-items: flex-start; flex-direction: column; gap: 7px; }
     .loto-hud { gap: 6px; }
@@ -348,4 +405,15 @@ h1 em { color: #b7592e; }
     .loto-mission-panel { display: block; padding: 12px; }
     .loto-step-list li { font-size: 9px; }
     .loto-task { min-height: 0; padding: 14px; }
+=======
+    .checklist-page { width: 100%; padding: 24px 20px 44px; }
+    .checklist-heading { padding-top: 32px; }
+    .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
+    .inspection-item { min-height: 76px; gap: 13px; }
+    .inspection-item small { max-width: 270px; }
+}
+@media (min-width: 601px) and (max-width: 799px) {
+    .checklist-page { width: 100%; padding: 32px 28px 64px; }
+    .inspection-panel { position: static; width: 100%; max-height: none; margin-bottom: 24px; }
+>>>>>>> 4ea0add7e54ef82fbd89b6f399e13b0546328408
 }

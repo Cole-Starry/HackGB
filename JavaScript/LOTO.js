@@ -228,6 +228,44 @@ function main() {
             <path class="scene-pipe scene-pipe-hydraulic" d="M66 173H172V196H252" />
             <path class="scene-pipe scene-pipe-air" d="M383 70H487V129" />
             <path class="scene-pipe scene-pipe-mechanical" d="M382 194H474V221" />
+            <g class="machine-overlay overlay-crew">
+                <circle cx="82" cy="78" r="9" />
+                <path d="M65 112q2-22 17-22t17 22M112 84h20M112 94h31M112 104h25" />
+                <circle cx="111" cy="76" r="6" />
+            </g>
+            <g class="machine-overlay overlay-isolation">
+                <circle cx="132" cy="112" r="12" />
+                <path d="M132 100v24m-12-12h24M454 70v23m-10-12 10-11 10 11" />
+                <circle cx="454" cy="70" r="5" />
+                <path d="M141 102l9-9m-18 31 9 9" />
+            </g>
+            <g class="machine-overlay overlay-locks">
+                <rect x="177" y="91" width="22" height="22" rx="3" />
+                <path d="M182 91v-5a6 6 0 0 1 12 0v5m-7 9v5" />
+                <rect x="158" y="181" width="22" height="22" rx="3" />
+                <path d="M163 181v-5a6 6 0 0 1 12 0v5m-7 9v5" />
+                <path class="lock-tag" d="M199 95h20v18h-20l-5-9zM180 185h17v17h-17l-5-8z" />
+                <path class="tag-mark" d="M204 101h10m-10 5h8m-25 83h8m-8 5h6" />
+            </g>
+            <g class="machine-overlay overlay-stored">
+                <circle cx="159" cy="166" r="19" />
+                <path d="M159 151v5m-15 10h5m10 15v-5m15-10h-5m-10 0 10-10" />
+                <path class="gauge-needle" d="M159 166l10-11" />
+                <rect class="safety-block" x="352" y="169" width="19" height="20" />
+                <path d="M348 189h27m-23-20v-7m15 7v-7" />
+            </g>
+            <g class="machine-overlay overlay-test">
+                <rect x="375" y="122" width="23" height="43" rx="3" />
+                <rect class="tester-screen" x="380" y="128" width="13" height="11" rx="1" />
+                <path d="M386 143v11m-4-2 4 4 4-4m-11 10h14" />
+                <path class="tester-lead" d="M375 157q-12 9-12 24" />
+                <circle cx="363" cy="182" r="3" />
+            </g>
+            <g class="machine-overlay overlay-work">
+                <path d="m147 145 21 21m-5-27 11 11-19 19-11-11zm-10-10 6 6m29 29 6 6" />
+                <path class="work-check" d="m126 182 6 6 12-14" />
+                <circle cx="135" cy="181" r="18" />
+            </g>
             <rect class="machine-base" x="193" y="212" width="198" height="20" rx="3" />
             <rect class="machine-body" x="224" y="97" width="136" height="115" rx="5" />
             <rect class="machine-top" x="246" y="76" width="91" height="21" rx="3" />
@@ -391,7 +429,7 @@ function main() {
         sceneActionLabel.textContent = visual.label;
         sceneActionTitle.textContent = visual.title;
         sceneActionDescription.textContent = visual.description;
-        scene.dataset.stage = secured ? "secured" : String(stepIndex);
+        scene.dataset.stage = String(stepIndex);
         scene.classList.toggle("is-secured", secured || stepIndex >= lotoSteps.length);
         scene.setAttribute("aria-label", `${visual.label}: ${visual.title}. ${visual.description}`);
     }
