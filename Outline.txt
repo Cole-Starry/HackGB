@@ -2,6 +2,10 @@ General outline for project
 
 Lock Out Tag Out Simulation:
 
+Before Simulation: only visuals displayed: machine, dotted lines, different energy sources 
+(ex: pneumatic, hydraulic, electric, mechanical). 
+Make dotted lines "interactive" by alerting a "click me!" operation to pull users to learn a simplified 
+description of each energy source. Provide breif paragraph on what and why.
 
 Gives task bar including saftey steps. If a saftey step is done wrong or missed, a 
 graphic pops up to tell the person that they failed and demonstrate that they put themselves
