@@ -11,13 +11,13 @@
         <a class="brand" href="#home">FOUNDRY <span>/ SHIFT</span></a>
         <a class="nav-link" href="#briefing">Safety Briefing</a>
     </header>
-    <main id="home">
+    <main id="home" class="possFire">
         <section class="hero">
             <div class="hero-copy">
                 <p class="eyebrow">INTERACTIVE SAFETY TRAINING</p>
                 <h1>Make every<br>shift a <em>safe</em> one.</h1>
                 <p class="intro">The furnace is live. Keep your crew safe, spot hazards, and make the right call on the foundry floor.</p>
-                <a class="start-button" href="ChooseGame.html">Start your shift <span aria-hidden="true">&#8599;</span></a>
+                <a class="start-button StartLink" href="ChooseGame.html">Start your shift <span aria-hidden="true">&#8599;</span></a>
                 <p class="duration">5 MINUTES <span>/</span> NO EXPERIENCE NEEDED</p>
             </div>
             <div class="hero-image" role="img" aria-label="Foundry workers safely pouring molten metal"></div>
@@ -26,11 +26,14 @@
             <p class="eyebrow">BEFORE YOU BEGIN</p>
             <h2>Three things to keep in mind.</h2>
             <ul>
-                <li><span>01</span> Keep clear of molten metal.</li>
-                <li><span>02</span> Watch for moving equipment.</li>
-                <li><span>03</span> Check your protective gear.</li>
+                <li><span>01</span> <button class="Fire-Hazard Hidden-Button">Keep clear of molten metal.</button></li>
+                <li><span>02</span> <button class="Forlift Hidden-Button"><span>Watch for moving equipment.</span></button></li>
+                <li><span>03</span> <button class="Hardhat Hidden-Button">Check your protective gear.</button></li>
             </ul>
         </section>
     </main>
+
+    <script src="../JavaScript/Start.js"></script>
+    <script src="../JavaScript/BackgroundMusic.js" defer></script>
 </body>
 </html>
