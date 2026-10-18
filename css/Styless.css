@@ -187,15 +187,19 @@ a { color: inherit; }
 }
 
 .brand span { color: #a6aba4; font-weight: 400; }
+.forklift-page .brand { font-size: 14px; }
 .page-label { color: #c9ccc5; font-size: 10px; letter-spacing: 1.3px; }
+.forklift-page .page-label { font-size: 12px; }
 .checklist-page { width: min(1160px, 100%); margin: 0 auto; padding: 32px 400px 64px 28px; }
-.back-link { color: var(--muted); font-size: 12px; text-decoration: none; }
+.forklift-page .back-link { color: var(--muted); font-size: 15px; text-decoration: none; }
 .back-link:hover { color: #b7592e; }
 .checklist-heading { padding: 38px 0 27px; }
 .eyebrow { margin: 0 0 14px; color: #477e70; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+.forklift-page .eyebrow { font-size: 12px; }
 h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 7vw, 64px); font-weight: 400; line-height: 1.02; }
 h1 em { color: #b7592e; }
 .intro { max-width: 490px; margin: 16px 0 0; color: #5f6761; font-size: 14px; line-height: 1.65; }
+.forklift-page .intro { font-size: 17px; line-height: 1.6; }
 .inspection-panel {
     position: fixed;
     z-index: 1;
@@ -209,14 +213,14 @@ h1 em { color: #b7592e; }
     background: var(--paper);
     box-shadow: 0 8px 24px rgb(27 33 31 / 14%);
 }
-.inspection-panel summary {
+.forklift-page .inspection-panel summary {
     position: sticky;
     top: 0;
     z-index: 1;
     padding: 18px 0;
     border-bottom: 1px solid #c8cac2;
     background: var(--paper);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -247,8 +251,8 @@ h1 em { color: #b7592e; }
 .inspection-item input:checked + .checkmark::after { opacity: 1; }
 .inspection-item input:focus-visible + .checkmark { outline: 3px solid var(--orange); outline-offset: 3px; }
 .inspection-item strong, .inspection-item small { display: block; }
-.inspection-item strong { font-size: 13px; }
-.inspection-item small { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.forklift-page .inspection-item strong { font-size: 16px; }
+.forklift-page .inspection-item small { margin-top: 4px; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .safety-note { display: flex; align-items: flex-start; gap: 12px; margin: 24px 0 0; color: #515a54; font-size: 12px; line-height: 1.6; }
 .safety-note span { width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; background: #f8d8c5; color: #9b4924; font-weight: 800; }
 .loto-step-list {
@@ -448,6 +452,7 @@ h1 em { color: #b7592e; }
 @media (max-width: 600px) {
     .topbar { height: 58px; padding: 0 20px; }
     .page-label { font-size: 9px; }
+    .forklift-page .page-label { font-size: 11px; }
 
     .loto-game-page { min-height: calc(100vh - 58px); padding: 18px 12px 30px; }
     .loto-game-header { align-items: flex-start; flex-direction: column; gap: 7px; }
@@ -548,7 +553,7 @@ h1 em { color: #b7592e; }
     margin-top: 20px;
 }
 
-.Drive {
+.forklift-page .Drive {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -560,7 +565,7 @@ h1 em { color: #b7592e; }
     box-shadow: 4px 4px 0 var(--ink);
     color: var(--ink);
     font: inherit;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
