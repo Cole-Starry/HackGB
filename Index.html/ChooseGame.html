@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Training | Foundry Shift</title>
+    <link rel="stylesheet" href="../css/Styless.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="Start.html">FOUNDRY <span>/ SHIFT</span></a>
+        <span class="page-label">CHOOSE YOUR TRAINING</span>
+    </header>
+    <main class="game-choice-page">
+        <section class="game-choice-content" aria-labelledby="game-choice-title">
+            <a class="game-choice-back" href="Start.html">&#8592; Back to briefing</a>
+            <a class="Pointer" href="Forlift/Forklift.html">
+                <img class="game-choice-forklift" src="../images/Forklift.png" alt="Forklift">
+            </a>
+            <img class="game-choice-worker" src="../images/PPEWorker.png" alt="Foundry worker wearing personal protective equipment" hidden>
+            <p class="eyebrow">SAFETY OPS · SELECT A MISSION</p>
+            <h1 id="game-choice-title">Choose your<br><em>next challenge.</em></h1>
+            <p class="intro">Select a lockout/tagout activity to begin your safety training.</p>
+            <div class="game-choice-grid">
+                <a class="game-choice-card" href="OutLockTagOut/Tag out.html">
+                    <span class="game-choice-number">01 / CHECKLIST</span>
+                    <h2>Lockout Checklist</h2>
+                    <p>Work through each step of a safe lockout/tagout procedure.</p>
+                    <span class="game-choice-action">Play checklist <span aria-hidden="true">&#8594;</span></span>
+                </a>
+                <a class="game-choice-card" href="Machine Safety/Machine Safety.html">
+                    <span class="game-choice-number">02 / MACHINE SAFETY</span>
+                    <h2>Machine Safety Game Quiz</h2>
+                    <p>Identify energy sources, secure the equipment, and verify it is safe.</p>
+                    <span class="game-choice-action">Play Machine Safety Quiz <span aria-hidden="true">&#8594;</span></span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script>
+        const ppeWorker = document.querySelector(".game-choice-worker");
+        ppeWorker.hidden = Math.random() >= 0.25;
+    </script>
+</body>
+</html>

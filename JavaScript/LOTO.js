@@ -631,7 +631,11 @@ function main() {
             updateSceneStatus("ENERGIZED", false);
             renderStep();
         });
-        task.replaceChildren(eyebrow, title, message, result, replay);
+        const chooseGame = document.createElement("a");
+        chooseGame.className = "loto-choice loto-start";
+        chooseGame.href = "../ChooseGame.html";
+        chooseGame.textContent = "Choose another game";
+        task.replaceChildren(eyebrow, title, message, result, replay, chooseGame);
     }
 
     renderStep();

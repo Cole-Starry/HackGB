@@ -23,7 +23,6 @@
             <form class="inspection-list">
                 <label class="inspection-item"><input type="checkbox" id="tires-wheels" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Tires and wheels</strong><small>Check for damage, wear, and secure wheel nuts.</small></span></label>
                 <label class="inspection-item"><input type="checkbox" id="forks-mast" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Forks and mast</strong><small>Look for cracks, bends, and secure locking pins.</small></span></label>
-                <label class="inspection-item"><input type="checkbox" id="hydraulics-chains" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Hydraulics and chains</strong><small>Check for leaks, wear, or damaged lift chains.</small></span></label>
                 <label class="inspection-item"><input type="checkbox" id="lights-horn-alarms" disabled><span class="checkmark" aria-hidden="true"></span><span><strong>Lights, horn, and alarms</strong><small>Confirm warning lights and audible signals work.</small></span></label>
                 
                 
@@ -37,12 +36,16 @@
             <div class="clickable-boxes">
                 <button type="button" class="wheel-box wheel-box--front" aria-label="Front wheel"></button>
                 <button type="button" class="wheel-box wheel-box--rear" aria-label="Rear wheel"></button>
-                <button type="button" class="Forks" aria-label="Forks"></button>
-            </div>
+                <button type="button" class="Forks ForkMast" aria-label="Forks"></button>
+                <button type="button" class="Mast ForkMast" aria-label="Mast"></button>
+                <button type="button" class="Horn" aria-label="Horn"></button>
 
+            </div>
             
         </div>
-        
+        <div class="Drive-Container">
+                <button type="button" class="Drive">Drive</button>
+        </div>
     </main>
     <script src="../../JavaScript/Forklift.js"></script>
 </body>
