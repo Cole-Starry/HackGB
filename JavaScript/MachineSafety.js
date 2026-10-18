@@ -173,6 +173,24 @@ function main() {
     let stepSecured = false;
     const completedSteps = new Set();
     let answerOrders = machineSafetyQuestions.map((step) => shuffleChoices(step.choices));
+    const correctAnswerSound = new Audio("../../Audio/Correct.mp3");
+    const incorrectAnswerSound = new Audio("../../Audio/Wrong.mp3");
+    const playQuizSound = (sound, description) => {
+        sound.currentTime = 0;
+        sound.play().catch((error) => {
+            console.error(`Unable to play the ${description} sound.`, error);
+        });
+    };
+
+    [
+        [correctAnswerSound, "correct-answer"],
+        [incorrectAnswerSound, "incorrect-answer"]
+    ].forEach(([sound, description]) => {
+        sound.volume = 0.5;
+        sound.addEventListener("error", () => {
+            console.error(`Unable to load the ${description} sound.`, sound.error);
+        });
+    });
 
     const shell = document.createElement("div");
     shell.className = "loto-game";
@@ -546,12 +564,14 @@ function main() {
 
     function handleAction(choice) {
         if (!choice.correct) {
+            playQuizSound(incorrectAnswerSound, "incorrect-answer");
             unsafeChoices += 1;
             riskHud.value.textContent = String(unsafeChoices).padStart(2, "0");
             showFailure(choice);
             return;
         }
 
+        playQuizSound(correctAnswerSound, "correct-answer");
         score += 100;
         stepSecured = true;
         renderStep();
@@ -588,6 +608,7 @@ function main() {
     }
 
     function renderComplete() {
+        document.dispatchEvent(new Event("training-success"));
         updateSceneVisual(machineSafetyQuestions.length);
         progress.value = machineSafetyQuestions.length;
         stageHud.value.textContent = "COMPLETE";

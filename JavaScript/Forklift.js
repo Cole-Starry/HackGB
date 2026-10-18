@@ -7,6 +7,7 @@ const hydraulicsAudio = new Audio("../../Audio/hydraulics.mp3");
 const hornAudio = new Audio("../../Audio/car-honk.mp3");
 const wheelAudio = new Audio("../../Audio/impact_wrench.mp3");
 
+metalAudio.volume = 0.125;
 
 document.querySelectorAll(".wheel-box").forEach((wheelBox) => {
     wheelBox.addEventListener("click", () => {
@@ -80,5 +81,4 @@ document.querySelector(".Drive").addEventListener("click", () =>
         window.location.href = "GameOver.html";
     }
 });
-
 

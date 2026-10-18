@@ -20,6 +20,7 @@ const setEnabledHazardButtons = (enabledButtons) => {
 };
 
 if (forkliftButton) {
+    const trafficSounds = new Audio("../Audio/TraficSounds.mp3");
     let worker;
     let forkliftActivityStarted = false;
     let forkliftSpawnTimeout;
@@ -27,6 +28,16 @@ if (forkliftButton) {
     const forkliftSpawnInterval = 2200;
     const forkliftImageBounds = { width: 225, height: 225, left: 19, top: 63, right: 193, bottom: 163 };
     const workerImageBounds = { width: 365, height: 547, left: 60, top: 48, right: 316, bottom: 546 };
+    trafficSounds.loop = true;
+    trafficSounds.addEventListener("error", () => {
+        console.error("Unable to load the forklift traffic sound.", trafficSounds.error);
+    });
+
+    const stopTrafficSounds = () => {
+        trafficSounds.pause();
+        trafficSounds.currentTime = 0;
+    };
+
     const getVisibleBounds = (element, imageBounds) => {
         const bounds = element.getBoundingClientRect();
 
@@ -92,6 +103,7 @@ if (forkliftButton) {
                     forkliftGameEnded = true;
                     window.clearTimeout(forkliftSpawnTimeout);
                     window.cancelAnimationFrame(animationFrame);
+                    stopTrafficSounds();
                     resetStartLink();
                     window.location.href = "ForLiftHazard/ForkliftDefeat.html";
                     return;
@@ -125,6 +137,9 @@ if (forkliftButton) {
         }
 
         forkliftActivityStarted = true;
+        trafficSounds.play().catch((error) => {
+            console.error("Unable to play the forklift traffic sound.", error);
+        });
         setEnabledHazardButtons([]);
         if (startLink) {
             startLink.href = "ForLiftHazard/ForkLiftLeft.html";
@@ -149,10 +164,22 @@ if (forkliftButton) {
         scheduleForklift();
         spawnForklift();
     });
+
+    startLink?.addEventListener("click", () => {
+        if (forkliftActivityStarted) {
+            stopTrafficSounds();
+        }
+    });
 }
 
 if (hardhatButton) {
+    const hardhatLandingSound = new Audio("../Audio/HelmetGroundHit.mp3");
     let activeHardhatFalls = 0;
+
+    hardhatLandingSound.volume = 0.5;
+    hardhatLandingSound.addEventListener("error", () => {
+        console.error("Unable to load the hardhat landing sound.", hardhatLandingSound.error);
+    });
 
     hardhatButton.addEventListener("click", () => {
         if (activeHardhatFalls === 0) {
@@ -171,8 +198,15 @@ if (hardhatButton) {
                 setEnabledHazardButtons(hazardButtons);
             }
         };
+        const landHardhat = () => {
+            const landingSound = hardhatLandingSound.cloneNode();
+            landingSound.volume = hardhatLandingSound.volume;
+            landingSound.play().catch((error) => {
+                console.error("Unable to play the hardhat landing sound.", error);
+            });
+            window.setTimeout(removeHardhat, 1000);
+        };
 
-        hardhat.src = "../images/Hardhat.png";
         hardhat.alt = "";
         hardhat.setAttribute("aria-hidden", "true");
         Object.assign(hardhat.style, {
@@ -180,30 +214,43 @@ if (hardhatButton) {
             top: "0",
             left: `${horizontalPosition}px`,
             width: `${hardhatSize}px`,
+            transform: "translateY(-150%) rotate(-15deg)",
             zIndex: "30",
             pointerEvents: "none"
         });
         document.body.appendChild(hardhat);
 
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            hardhat.style.top = `${Math.max(0, window.innerHeight - hardhatSize)}px`;
-            window.setTimeout(removeHardhat, 1200);
-            return;
-        }
+        hardhat.addEventListener("load", () => {
+            const landingOffset = Math.max(0, window.innerHeight - hardhat.offsetHeight);
 
-        const fallAnimation = hardhat.animate(
-            [
-                { transform: "translateY(-100%) rotate(-15deg)" },
-                { transform: `translateY(${window.innerHeight + hardhatSize}px) rotate(360deg)` }
-            ],
-            { duration: 1800, easing: "cubic-bezier(.55, .05, .85, .35)" }
-        );
-        fallAnimation.onfinish = removeHardhat;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                hardhat.style.transform = "none";
+                hardhat.style.top = `${landingOffset}px`;
+                window.setTimeout(landHardhat, 1200);
+                return;
+            }
+
+            const fallAnimation = hardhat.animate(
+                [
+                    { transform: "translateY(-150%) rotate(-15deg)" },
+                    { transform: `translateY(${landingOffset}px) rotate(360deg)` }
+                ],
+                { duration: 1800, easing: "cubic-bezier(.55, .05, .85, .35)", fill: "forwards" }
+            );
+            fallAnimation.onfinish = landHardhat;
+        }, { once: true });
+        hardhat.addEventListener("error", () => {
+            console.error("Unable to load the falling hardhat image.", hardhat.src);
+            removeHardhat();
+        }, { once: true });
+        hardhat.src = "../images/Hardhat.png";
     });
 }
 
 if (fireHazardButton && startLink) {
     const fireLayer = document.createElement("div");
+    const burningSound = new Audio("../Audio/BurningSound.mp3");
+    const fireExtinguishedSound = new Audio("../Audio/FireExtinguished.mp3");
     const activeFires = new Set();
     const targetScore = 30;
     const maxActiveFires = 15;
@@ -211,6 +258,15 @@ if (fireHazardButton && startLink) {
     let score = 0;
     let spawnTimeout;
     let gameEnded = false;
+
+    burningSound.loop = true;
+    burningSound.addEventListener("error", () => {
+        console.error("Unable to load the fire hazard sound.", burningSound.error);
+    });
+    fireExtinguishedSound.volume = 0.5;
+    fireExtinguishedSound.addEventListener("error", () => {
+        console.error("Unable to load the fire extinguished sound.", fireExtinguishedSound.error);
+    });
 
     fireLayer.setAttribute("aria-label", "Active fire hazards");
     Object.assign(fireLayer.style, {
@@ -228,6 +284,8 @@ if (fireHazardButton && startLink) {
 
         gameEnded = true;
         window.clearTimeout(spawnTimeout);
+        burningSound.pause();
+        burningSound.currentTime = 0;
         resetStartLink();
         window.location.href = destination;
     };
@@ -270,6 +328,10 @@ if (fireHazardButton && startLink) {
         fireButton.addEventListener("click", () => {
             activeFires.delete(fireButton);
             fireButton.remove();
+            fireExtinguishedSound.currentTime = 0;
+            fireExtinguishedSound.play().catch((error) => {
+                console.error("Unable to play the fire extinguished sound.", error);
+            });
             score += Math.floor(Math.random() * 3) + 1;
 
             if (score >= targetScore && activeFires.size === 0) {
@@ -313,6 +375,9 @@ if (fireHazardButton && startLink) {
         setEnabledHazardButtons([]);
         document.body.classList.add("fire-active");
         startLink.href = "FireHazard/FireHazardVictory.html";
+        burningSound.play().catch((error) => {
+            console.error("Unable to play the fire hazard sound.", error);
+        });
         addFireMultiple(Math.floor(Math.random() * 3) + 1);
         scheduleNextFire();
         fireHazardButton.classList.remove("Fire-Hazard");

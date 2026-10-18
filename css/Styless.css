@@ -136,7 +136,12 @@ h2 { font-size: clamp(28px, 3vw, 38px); }
     color: var(--paper);
 }
 .game-choice-content { position: relative; width: min(980px, 100%); margin: 0 auto; }
-.game-choice-forklift { position: absolute; top: 42px; right: 0; width: clamp(190px, 27vw, 280px); height: auto; }
+.game-choice-forklift-link { position: absolute; top: 42px; right: 0; display: grid; width: clamp(190px, 27vw, 280px); justify-items: center; gap: 4px; padding: 8px; border: 1px solid #52615a; background: #222a26; color: var(--orange); text-align: center; text-decoration: none; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.game-choice-forklift { display: block; width: 100%; height: auto; }
+.game-choice-forklift-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.game-choice-forklift-label span { margin-left: 3px; font-size: 13px; }
+.game-choice-forklift-link:hover { transform: translateY(-3px); border-color: var(--orange); box-shadow: 0 5px 18px rgb(240 123 56 / 22%); }
+.game-choice-forklift-link:focus-visible { transform: translateY(-3px); outline: 3px solid var(--orange); outline-offset: 4px; }
 .game-choice-worker-overlay { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; overflow: hidden; background: rgb(27 33 31 / 88%); pointer-events: none; }
 .game-choice-worker-overlay[hidden] { display: none; }
 .game-choice-worker-overlay img { grid-area: 1 / 1; width: auto; height: min(92vh, 900px); max-width: 90vw; object-fit: contain; }
@@ -179,7 +184,7 @@ h2 { font-size: clamp(28px, 3vw, 38px); }
 	.briefing ul { grid-template-columns: 1fr; gap: 14px; }
     .game-choice-page { min-height: calc(100vh - 58px); padding: 28px 20px 44px; }
     .game-choice-back { margin-bottom: 34px; }
-    .game-choice-forklift { top: 70px; right: 0; width: 135px; }
+    .game-choice-forklift-link { top: 70px; right: 0; width: 150px; padding: 6px; }
     .game-choice-worker-overlay img { height: min(85vh, 720px); }
     .game-choice-worker-overlay p { top: 55%; padding: 10px 12px; }
     .game-choice-worker-peek { right: 16px; width: 92px; height: 42px; }
@@ -627,6 +632,36 @@ h1 em { color: #b7592e; }
 
 .Pointer{
     cursor: pointer;
+}
+
+.background-music-control {
+    position: fixed;
+    z-index: 20;
+    bottom: 16px;
+    left: 16px;
+    padding: 10px 14px;
+    border: 1px solid var(--teal);
+    background: #222a26;
+    color: var(--paper);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.background-music-control:hover:not(:disabled) {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.background-music-control:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+}
+
+.background-music-control:disabled {
+    cursor: not-allowed;
+    opacity: .7;
 }
 
 .game-over-page {
