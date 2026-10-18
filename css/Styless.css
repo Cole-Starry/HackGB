@@ -847,3 +847,245 @@ h1 em { color: #b7592e; }
     padding: 10px 5px 10px 5px;
 }
 
+body.forklift-page {
+    background-image:
+        linear-gradient(135deg, rgb(15 20 18 / 82%), rgb(20 26 23 / 72%)),
+        url("../images/Foundry-Background.jpg");
+    background-attachment: fixed;
+}
+
+.forklift-page .topbar {
+    border-bottom: 1px solid rgb(239 239 233 / 12%);
+    box-shadow: 0 8px 28px rgb(0 0 0 / 20%);
+}
+
+.forklift-page .checklist-page {
+    display: grid;
+    grid-template-areas:
+        "back checklist"
+        "heading checklist"
+        "truck checklist"
+        "drive checklist";
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
+    grid-template-rows: auto auto minmax(260px, auto) auto;
+    align-items: start;
+    gap: 0 40px;
+    width: min(1200px, 100%);
+    padding: 32px 32px 56px;
+}
+
+.forklift-page .back-link {
+    grid-area: back;
+    justify-self: start;
+    padding: 8px 0;
+    background: transparent;
+    color: #c4cbc4;
+    font-size: 13px;
+    transition: color .15s ease;
+}
+
+.forklift-page .back-link:hover {
+    background: transparent;
+    color: var(--orange);
+}
+
+.forklift-page .checklist-heading {
+    grid-area: heading;
+    padding: 28px 0 22px;
+    background: transparent;
+    color: var(--paper);
+}
+
+.forklift-page .checklist-heading .eyebrow {
+    color: var(--teal);
+}
+
+.forklift-page .checklist-heading h1 {
+    font-size: clamp(42px, 5.5vw, 68px);
+}
+
+.forklift-page .checklist-heading h1 em {
+    color: var(--orange);
+}
+
+.forklift-page .checklist-heading .intro {
+    max-width: 470px;
+    margin-top: 18px;
+    color: #c4cbc4;
+    font-size: 15px;
+}
+
+.forklift-page .inspection-panel {
+    position: sticky;
+    grid-area: checklist;
+    top: 88px;
+    width: 100%;
+    max-height: calc(100vh - 112px);
+    margin: 8px 0 0;
+    padding: 0 22px 20px;
+    border: 1px solid #3c4942;
+    background: #202824;
+    box-shadow: 0 18px 48px rgb(0 0 0 / 24%);
+    color: var(--paper);
+}
+
+.forklift-page .inspection-panel summary {
+    padding: 20px 0 16px;
+    border-color: #3c4942;
+    background: #202824;
+    color: var(--paper);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.inspection-hint {
+    margin: 14px 0;
+    color: #b9c2ba;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.forklift-page .inspection-list {
+    border-color: #3c4942;
+}
+
+.forklift-page .inspection-item {
+    gap: 14px;
+    padding: 16px 4px;
+    border-color: #3c4942;
+}
+
+.forklift-page .inspection-item strong {
+    color: var(--paper);
+    font-size: 14px;
+}
+
+.forklift-page .inspection-item small {
+    color: #aeb8af;
+    font-size: 12px;
+}
+
+.forklift-page .checkmark {
+    border-color: #68766d;
+    background: #28322d;
+}
+
+.forklift-page .inspection-item input:checked + .checkmark {
+    border-color: var(--teal);
+    background: var(--teal);
+}
+
+.forklift-page .image-container {
+    grid-area: truck;
+    width: min(100%, 640px);
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgb(117 184 167 / 22%);
+    background:
+        radial-gradient(ellipse at 50% 75%, rgb(117 184 167 / 10%), transparent 60%),
+        linear-gradient(145deg, rgb(35 45 40 / 94%), rgb(25 32 29 / 94%));
+    box-shadow: 0 18px 42px rgb(0 0 0 / 20%);
+}
+
+.forklift-page .forklift-image {
+    filter: drop-shadow(0 14px 14px rgb(0 0 0 / 25%));
+}
+
+.forklift-page .clickable-boxes button {
+    border: 2px dashed transparent;
+    background: transparent;
+    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.forklift-page .wheel-box {
+    border-color: rgb(240 123 56 / 62%);
+    background: rgb(240 123 56 / 5%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.forklift-page .wheel-box:hover,
+.forklift-page .wheel-box:focus-visible,
+.forklift-page .ForkMast.Pointer:hover,
+.forklift-page .ForkMast.Pointer:focus-visible,
+.forklift-page .Horn.Pointer:hover,
+.forklift-page .Horn.Pointer:focus-visible {
+    border-color: var(--orange);
+    background: rgb(240 123 56 / 20%);
+    box-shadow: 0 0 0 4px rgb(240 123 56 / 12%);
+    outline: none;
+}
+
+.forklift-page .ForkMast.Pointer,
+.forklift-page .Horn.Pointer {
+    border-color: rgb(240 123 56 / 72%);
+    background: rgb(240 123 56 / 7%);
+    cursor: pointer;
+}
+
+.forklift-page .Drive-Container {
+    grid-area: drive;
+    margin-top: 22px;
+}
+
+.forklift-page .Drive {
+    min-width: 190px;
+}
+
+@media (max-width: 850px) {
+    .forklift-page .checklist-page {
+        grid-template-areas:
+            "back"
+            "heading"
+            "checklist"
+            "truck"
+            "drive";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        gap: 0;
+        max-width: 720px;
+        padding: 24px 28px 48px;
+    }
+
+    .forklift-page .checklist-heading {
+        padding-top: 24px;
+    }
+
+    .forklift-page .inspection-panel {
+        position: static;
+        max-height: none;
+        margin: 0 0 24px;
+    }
+
+    .forklift-page .image-container {
+        width: min(100%, 640px);
+    }
+}
+
+@media (max-width: 600px) {
+    .forklift-page .checklist-page {
+        padding: 18px 20px 36px;
+    }
+
+    .forklift-page .checklist-heading {
+        padding: 22px 0 20px;
+    }
+
+    .forklift-page .checklist-heading h1 {
+        font-size: clamp(42px, 12vw, 58px);
+    }
+
+    .forklift-page .inspection-panel {
+        padding: 0 16px 14px;
+    }
+
+    .forklift-page .inspection-item {
+        min-height: 68px;
+        gap: 12px;
+    }
+
+    .forklift-page .Drive-Container {
+        margin-top: 18px;
+    }
+}
