@@ -831,3 +831,8 @@ h1 em { color: #b7592e; }
 .Hidden-Button.Hardhat:hover:not(:disabled) {
     color: #f4c542;
 }
+
+.backgroundBox-Forklift{
+    background: var(--paper);
+    padding: 10px 14px;
+}
