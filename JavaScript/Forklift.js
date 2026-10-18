@@ -4,7 +4,7 @@ var HornUnchecked = 1;
 
 const metalAudio = new Audio("../../Audio/metal-pipe.mp3");
 const hydraulicsAudio = new Audio("../../Audio/hydraulics.mp3");
-const HornAudio = new Audio("../../Audio/horn.mp3");
+const hornAudio = new Audio("../../Audio/car-honk.mp3");
 const wheelAudio = new Audio("../../Audio/impact_wrench.mp3");
 
 
@@ -57,8 +57,8 @@ Horn.addEventListener("click", () =>
         Horn.remove();
         HornUnchecked--;
         metalAudio.currentTime = 100;
-        HornAudio.currentTime = 0;
-        HornAudio.play();
+        hornAudio.currentTime = 0;
+        hornAudio.play();
         document.querySelector("#lights-horn-alarms").checked = true;
     }
 });
