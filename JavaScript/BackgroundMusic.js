@@ -6,11 +6,43 @@ const music = new Audio(new URL(`../Audio/${musicTrack}`, document.currentScript
 const outcomeType = document.body.dataset.outcome;
 const outcomeTrack = outcomeType === "defeat" ? "Defeat.mp3" : "Success.mp3";
 const musicControl = document.createElement("button");
-const savedPosition = Number(sessionStorage.getItem(musicPositionKey));
+const inMemorySettings = new Map();
+let storageWarningShown = false;
 let musicUnavailable = false;
 
+const getMusicSetting = (key) => {
+    try {
+        const value = sessionStorage.getItem(key);
+        if (value !== null) {
+            inMemorySettings.set(key, value);
+            return value;
+        }
+    } catch (error) {
+        if (!storageWarningShown) {
+            console.warn("Session storage is unavailable; music preferences will only last on this page.", error);
+            storageWarningShown = true;
+        }
+    }
+
+    return inMemorySettings.get(key) ?? null;
+};
+
+const setMusicSetting = (key, value) => {
+    inMemorySettings.set(key, value);
+    try {
+        sessionStorage.setItem(key, value);
+    } catch (error) {
+        if (!storageWarningShown) {
+            console.warn("Session storage is unavailable; music preferences will only last on this page.", error);
+            storageWarningShown = true;
+        }
+    }
+};
+
+const savedPosition = Number(getMusicSetting(musicPositionKey));
 const outcomeSound = new Audio(new URL(`../Audio/${outcomeTrack}`, document.currentScript.src));
 let outcomeSoundPlayed = false;
+let autoplayBlocked = false;
 
 outcomeSound.volume = 0.65;
 outcomeSound.addEventListener("error", () => {
@@ -56,15 +88,16 @@ music.volume = 0.35;
 
 musicControl.type = "button";
 musicControl.className = "background-music-control";
-musicControl.textContent = "♫ Play music";
-musicControl.setAttribute("aria-label", `Play ${musicTitle} background music`);
+musicControl.textContent = "♫ Start music";
+musicControl.setAttribute("aria-label", `Start ${musicTitle} background music`);
 musicControl.setAttribute("aria-pressed", "false");
 document.body.append(musicControl);
 
 const updateMusicControl = () => {
     const isPlaying = !music.paused;
-    musicControl.textContent = isPlaying ? "♫ Pause music" : "♫ Play music";
-    musicControl.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${musicTitle} background music`);
+    const action = isPlaying ? "Pause" : autoplayBlocked ? "Resume" : "Start";
+    musicControl.textContent = `♫ ${action} music`;
+    musicControl.setAttribute("aria-label", `${action} ${musicTitle} background music`);
     musicControl.setAttribute("aria-pressed", String(isPlaying));
 };
 
@@ -82,20 +115,25 @@ const startMusic = (savePreference) => {
     }
 
     if (savePreference) {
-        sessionStorage.setItem(musicPreferenceKey, "playing");
+        setMusicSetting(musicPreferenceKey, "playing");
     }
 
     music.play().catch((error) => {
-        if (error.name !== "NotAllowedError") {
-            console.error(`Unable to play ${musicTitle} background music.`, error);
-            showMusicUnavailable();
+        if (error.name === "NotAllowedError") {
+            autoplayBlocked = true;
+            console.info(`Chrome blocked autoplay for ${musicTitle}; use the music control or interact with the page to resume playback.`);
+            updateMusicControl();
+            return;
         }
+
+        console.error(`Unable to play ${musicTitle} background music.`, error);
+        showMusicUnavailable();
     });
 };
 
 const saveMusicPosition = () => {
     if (Number.isFinite(music.currentTime)) {
-        sessionStorage.setItem(musicPositionKey, String(music.currentTime));
+        setMusicSetting(musicPositionKey, String(music.currentTime));
     }
 };
 
@@ -105,9 +143,10 @@ music.addEventListener("loadedmetadata", () => {
     }
 }, { once: true });
 music.addEventListener("play", () => {
+    autoplayBlocked = false;
     updateMusicControl();
-    if (sessionStorage.getItem(musicPreferenceKey) !== "paused") {
-        sessionStorage.setItem(musicPreferenceKey, "playing");
+    if (getMusicSetting(musicPreferenceKey) !== "paused") {
+        setMusicSetting(musicPreferenceKey, "playing");
     }
 });
 music.addEventListener("pause", updateMusicControl);
@@ -121,14 +160,14 @@ musicControl.addEventListener("click", () => {
     if (music.paused) {
         startMusic(true);
     } else {
-        sessionStorage.setItem(musicPreferenceKey, "paused");
+        setMusicSetting(musicPreferenceKey, "paused");
         music.pause();
         saveMusicPosition();
     }
 });
 
 document.addEventListener("click", (event) => {
-    if (musicControl.contains(event.target) || sessionStorage.getItem(musicPreferenceKey) === "paused") {
+    if (musicControl.contains(event.target) || getMusicSetting(musicPreferenceKey) === "paused") {
         return;
     }
     if (music.paused) {
@@ -136,8 +175,19 @@ document.addEventListener("click", (event) => {
     }
 });
 
+const resumeAfterInteraction = (event) => {
+    if (!autoplayBlocked || musicControl.contains(event.target) || getMusicSetting(musicPreferenceKey) === "paused") {
+        return;
+    }
+
+    startMusic(true);
+};
+
+document.addEventListener("pointerdown", resumeAfterInteraction);
+document.addEventListener("keydown", resumeAfterInteraction);
+
 window.addEventListener("pagehide", saveMusicPosition);
 
-if (sessionStorage.getItem(musicPreferenceKey) !== "paused") {
+if (getMusicSetting(musicPreferenceKey) !== "paused") {
     startMusic(false);
 }
