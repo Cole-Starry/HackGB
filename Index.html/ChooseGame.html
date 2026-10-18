@@ -17,7 +17,13 @@
             <a class="Pointer" href="Forlift/Forklift.html">
                 <img class="game-choice-forklift" src="../images/Forklift.png" alt="Forklift">
             </a>
-            <img class="game-choice-worker" src="../images/PPEWorker.png" alt="Foundry worker wearing personal protective equipment" hidden>
+            <div class="game-choice-worker-overlay" hidden>
+                <img src="../images/PPEWorker.png" alt="">
+                <p>WEAR YOUR SAFETY EQUIPMENT!</p>
+            </div>
+            <button class="game-choice-worker-peek" type="button" aria-label="Reveal the foundry worker" hidden>
+                <img src="../images/PPEWorker.png" alt="" aria-hidden="true">
+            </button>
             <p class="eyebrow">SAFETY OPS · SELECT A MISSION</p>
             <h1 id="game-choice-title">Choose your<br><em>next challenge.</em></h1>
             <p class="intro">Select a lockout/tagout activity to begin your safety training.</p>
@@ -37,9 +43,7 @@
             </div>
         </section>
     </main>
-    <script>
-        const ppeWorker = document.querySelector(".game-choice-worker");
-        ppeWorker.hidden = Math.random() >= 0.25;
-    </script>
+    
+    <script src="../JavaScript/ChooseGame.js"></script>
 </body>
 </html>
